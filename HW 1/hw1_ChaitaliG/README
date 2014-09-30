@@ -1,0 +1,11 @@
+Submitted by Chaitali Gondhalekar
+
+After careful observation of stack, I realized that the pw, name, evil, good are placed on consecutively and it is possible to overwrite one or more of these four fields with a really large input to name or pw.
+The aim was to print welcome message even if name and pw are different. So, I wrote ip2.c which creates an input file(my_file) for the given program(badbuf). my_file contains one string (size<123) that acts as 'login:' and another string (size=128*2)as 'pw:'. When run, the pw string overflows into name and thus name and pw end up being the same. The placement of '\0' is crucial for the attack to be successful.
+
+Files:
+1.badbuf.c 2.ip2.c 3.my_file 4.log 5.makefile 6.README
+plus executables for badbuf.c and ip2.c
+
+makefile uses a target named attack.
+So , typing "make attack" runs the makefile, compiles both.c files, executes .o files with my_file acting as input.

